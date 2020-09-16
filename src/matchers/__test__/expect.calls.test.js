@@ -5,8 +5,11 @@ function forEach(items, callback) {
 test("TODO 11", () => {
   const mockCallback = jest.fn((x) => 42 + x);
   forEach([1, 2], mockCallback);
-
   // TODO 11: add assertion
+  expect(mockCallback).toHaveBeenCalled();
+  expect(mockCallback).toHaveBeenCalledTimes(2);
+  expect(mockCallback).toHaveBeenCalledWith(1);
+  expect(mockCallback).toHaveBeenCalledWith(2);
 });
 
 test("TODO 12", () => {
@@ -17,8 +20,8 @@ test("TODO 12", () => {
     .mockReturnValue(true);
 
   // TODO 12: to add "expected" value
-  expect(mockFn()).toBe(expected);
-  expect(mockFn()).toBe(expected);
-  expect(mockFn()).toBe(expected);
-  expect(mockFn()).toBe(expected);
+  expect(mockFn()).toBe(42);
+  expect(mockFn()).toBe("string");
+  expect(mockFn()).toBe(true);
+  expect(mockFn()).toBe(true);
 });
