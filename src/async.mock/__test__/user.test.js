@@ -1,5 +1,5 @@
 import { register, validate } from "../user";
-import { verifyPassword, verifyUsername } from "../verify";
+import { verifyUsername } from "../verify";
 
 jest.mock("../verify");
 jest.mock("axios");
@@ -9,10 +9,12 @@ describe("register", () => {
     // TODO 19: add test here
     const username = "fake username";
     const password = "fake password";
-    const result = validate(username, password);
-    expect(verifyPassword).toHaveBeenCalled();
-    expect(verifyUsername).toHaveBeenCalled();
-    expect(result).toBeTruthy();
+    // TODO feedback: 我们这个测试是要测post,而且post是有返回值的，所以，我们测试返回就行了
+
+    // const result = validate(username, password);
+    // expect(verifyPassword).toHaveBeenCalled();
+    // expect(verifyUsername).toHaveBeenCalled();
+    // expect(result).toBeTruthy();
     const results = register(username, password);
     await expect(results).resolves.toEqual({});
   });
